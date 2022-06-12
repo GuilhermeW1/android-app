@@ -3,53 +3,52 @@ package com.example.acoes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-
-import com.example.acoes.controller.UserController;
-import com.example.acoes.database.DadosOpenHelper;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView lblValorTotalMovs;
+    Button btnAddMov;
+    Button btnMovHistory;
     Context context;
-    Button btnLogin;
-    EditText txtUser;
-    EditText txtPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        lblValorTotalMovs = findViewById(R.id.mainActivity_lbl_vlrMovs);
+        btnAddMov = findViewById(R.id.mainActivity_btn_addMov);
+        btnMovHistory = findViewById(R.id.mainActivity_btn_histMovs);
         context = MainActivity.this;
-        txtUser = findViewById(R.id.loginActivity_txt_user);
-        txtPassword = findViewById(R.id.loginActivity_txt_password);
-        btnLogin = findViewById(R.id.loginActivity_bnt_login);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        //lblValorTotalMovs.setText(setValueTotalMovs());
+
+        btnAddMov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = txtUser.getText().toString().trim();
-                String password = txtPassword.getText().toString().trim();
-
-                UserController userController = new UserController(context);
-
-                if(!user.equals("") || !password.equals("")){
-                    if(userController.login(user, password)){
-                        //TODO chamar nova tela
-                        System.out.println("asadf");
-                    }else{
-                        //TODO n sei o que faz aqui
-                    }
-                }else{
-
-                }
-
-
+                //Intent tela = new Intent(context, ...);
+                //startActivity(tela);
             }
         });
 
+        btnMovHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent tela = new Intent(context, ...);
+                //startActivity(tela);
+            }
+        });
 
     }
+
+    //TODO funcao para setar a lable de valor total de movimentacoes
+    //private static String setValueTotalMovs(){
+
+    //}
 }

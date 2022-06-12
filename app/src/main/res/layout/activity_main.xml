@@ -6,128 +6,114 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    style="@style/default_basic_screen"
-    >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="70dp">
+    style="@style/default_basic_screen">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/text_color"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="30dp"
-            android:paddingLeft="10dp"
-            android:text="Bem Vindo  : )"
-            >
-        </TextView>
-        <TextView
-            android:id="@+id/txt_userName_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_color"
-            android:text="teset"
-            android:textSize="30dp"
-            android:paddingLeft="10dp"
-            android:fontFamily="@font/poppins_regular"
-
-            >
-
-        </TextView>
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="User"
-            android:textSize="25dp"
-            android:textColor="@color/text_color"
-            android:fontFamily="@font/poppins_regular"
-            >
-        </TextView>
-
-        <EditText
-            android:id="@+id/loginActivity_txt_user"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="19qwerwe"
-            android:textSize="20dp"
-            android:inputType="text"
-            android:gravity="center"
-            android:textColor="@color/text_color"
-            android:layout_gravity="center"
-            android:background="@color/background_color2"
-            android:padding="10dp"
-            >
-
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="Password"
-            android:textSize="25dp"
-            android:textColor="@color/text_color"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="30dp"
-            >
-        </TextView>
-
-        <EditText
-            android:id="@+id/loginActivity_txt_password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="19qwerwe"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:inputType="textPassword"
-            android:textColor="@color/text_color"
-            android:layout_gravity="center"
-            android:background="@color/background_color2"
-            android:padding="10dp"
-            >
-
-        </EditText>
-
-        <Button
-            android:id="@+id/loginActivity_bnt_login"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Login"
-            android:theme="@style/buttonPrimary"
-            android:layout_marginTop="100dp"
-            >
-        </Button>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/button_esc"
-        android:text="REGISTER NOW -->"
-        android:layout_marginTop="100dp"
+        android:padding="10dp"
+        android:textSize="25dp"
         android:gravity="start"
-        android:textColor="@color/aux_color2"
-        android:textSize="15dp"
-        android:fontFamily="@font/poppins_semi_bold"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/text_color"
+        android:text="Valor total das movimentacoes !"
+        >
+    </TextView>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="150dp"
+
+        android:padding="10dp"
+
+        android:gravity="bottom"
+
+        android:background="@color/background_color2"
+        >
+        <TextView
+            android:id="@+id/mainActivity_lbl_vlrMovs"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="R$ 00.00"
+            android:textSize="35dp"
+            >
+
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Movimentacoes"
+        android:padding="5dp"
+        android:textSize="20dp"
+
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginRight="10dp"
+
         >
 
-    </Button>
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/mainActivity_btn_addMov"
+                android:layout_gravity="right"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:background="@color/aux_color2"
+                android:layout_marginRight="15dp"
+
+                android:textColor="@color/text_color"
+                android:textSize="17dp"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="bottom"
+                android:text="Adicionar Movimentacao"
+                >
+
+            </Button>
+            <Button
+                android:id="@+id/mainActivity_btn_histMovs"
+                android:layout_gravity="left"
+                android:layout_marginLeft="15dp"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:textSize="17dp"
+                android:padding="5dp"
+                android:gravity="bottom"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/text_color"
+                android:text="Historico de Movimentacao"
+                android:background="@color/aux_color2"
+                >
+
+            </Button>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </LinearLayout>
