@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddMov;
     Button btnMovHistory;
     Context context;
+    int idUser;
 
 
     @Override
@@ -32,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
         btnAddMov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent tela = new Intent(context, ...);
-                //startActivity(tela);
+                Intent screen = new Intent(context, AddMovement.class);
+                screen.putExtra("id", idUser);
+                startActivity(screen);
             }
         });
 
@@ -44,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(tela);
             }
         });
+
+        //estou mandando o id do usuario que passo na hora de instanciar esta tela
+        Bundle extras = getIntent().getExtras();
+        try {
+            if(extras != null){
+                idUser = extras.getInt("id", 0);
+            }
+        }catch (Exception ex){
+            System.out.println("erro");
+        }
 
     }
 

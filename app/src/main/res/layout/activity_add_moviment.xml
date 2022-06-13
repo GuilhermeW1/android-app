@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMovement"
+    android:orientation="vertical"
+    style="@style/default_basic_screen">
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quantidade de acoes"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        >
+    </TextView>
+    <EditText
+        android:id="@+id/addMovementActivity_txt_qntdAcoes"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        android:background="@color/background_color2"
+        android:inputType="number"
+        android:gravity="end"
+        android:hint="200"
+        >
+    </EditText>
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor unitario"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        >
+    </TextView>
+    <EditText
+        android:id="@+id/addMovementActivity_txt_vlrUnit"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        android:background="@color/background_color2"
+        android:inputType="number"
+        android:gravity="end"
+        android:hint="200,00"
+        >
+    </EditText>
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data da Compra"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        >
+    </TextView>
+    <EditText
+        android:id="@+id/addMovementActivity_date_compra"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        android:background="@color/background_color2"
+        android:inputType="date"
+        android:gravity="end"
+        android:hint="00/00/0000"
+        >
+    </EditText>
+
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acao"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="20dp"
+        android:textColor="@color/text_color"
+        >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spininer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
+
+    <Button
+        android:id="@+id/addMovementActivity_btn_deletar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="35dp"
+        android:textSize="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/text_color"
+        android:background="@color/background_color2"
+        android:text="Deletar"
+        android:fontFamily="@font/poppins_bold"
+        >
+    </Button>
+
+</LinearLayout>

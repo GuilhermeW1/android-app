@@ -18,7 +18,7 @@ public class UserController {
 
     }
 
-    public boolean login(String login, String password){
+    public int login(String login, String password){
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM ");
         sql.append(Tables.TB_USUARIOS);
@@ -26,10 +26,10 @@ public class UserController {
         sql.append(" AND senha = '"+password+"'");
 
         Cursor res = conexao.rawQuery(sql.toString(), null);
-        if(res.moveToNext()){
-            return true;
+        if( !res.moveToNext()){
+            return 0;
         }
-        return false;
+        return res.getInt(res.getColumnIndexOrThrow("id"));
     }
     /*
 

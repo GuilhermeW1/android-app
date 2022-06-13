@@ -36,8 +36,10 @@ public class LoginActivity extends AppCompatActivity {
                 UserController userController = new UserController(context);
 
                 if(!user.equals("") || !password.equals("")){
-                    if(userController.login(user, password)){
+                    int idUser = userController.login(user, password);
+                    if(idUser >= 1){
                         Intent tela = new Intent(context, MainActivity.class);
+                        tela.putExtra("id", idUser);
                         startActivity(tela);
                     }else{
                         //TODO n sei o que faz aqui

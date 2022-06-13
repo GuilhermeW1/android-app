@@ -52,7 +52,9 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
             sql.append(" id_acao integer not null, ");
             sql.append(" id_user integer not null, ");
             sql.append(" vlr_unid float not null, ");
+            sql.append(" vlr_total float not null, ");
             sql.append(" qntd_acoes integer not null, ");
+            sql.append(" data_movement date, ");
             sql.append(" foreign key (id_acao) references " + (Tables.TB_ACOES) + ", ");
             sql.append(" foreign key (id_user) references " + (Tables.TB_USUARIOS) + " ");
             sql.append(" ) ");
@@ -61,6 +63,36 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
             sql = new StringBuilder();
             sql.append("insert into " + Tables.TB_USUARIOS + " values(1, 'gui', '123')");
             db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(1, 'MGLU3')");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(2, 'TOTS3') ");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(3, 'VALE3') ");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(4, 'CASH3') ");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(5, 'ITUB4') ");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(6, 'ITUB3') ");
+            db.execSQL(sql.toString());
+
+            sql = new StringBuilder();
+            sql.append("insert into "+Tables.TB_ACOES+ " values(7, 'OIBR3') ");
+            db.execSQL(sql.toString());
+
+
         }catch (Exception ex){
             System.out.println("error" +ex.getMessage());
         }
