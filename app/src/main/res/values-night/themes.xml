@@ -13,4 +13,29 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="buttonPrimary" >
+        <item name="android:textSize">24dp</item>
+        <item name="android:background">@color/default_color_app</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="button_esc" parent="Widget.AppCompat.Light.ActionButton">
+
+        <item name="android:background">@color/default_background</item>
+
+
+
+    </style>
+
+    <style name="default_basic_screen" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@color/default_background</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="TextAppearance.AppCompat.Widget.Button.Colored">
+        <item name="colorButtonNormal">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
