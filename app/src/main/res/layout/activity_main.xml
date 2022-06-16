@@ -57,7 +57,7 @@
 
         android:textColor="@color/text_color"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginRight="10dp"
+
 
         >
 
@@ -69,22 +69,24 @@
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+
         >
 
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             >
 
             <Button
                 android:id="@+id/mainActivity_btn_addMov"
-                android:layout_gravity="right"
-                android:layout_width="170dp"
-                android:layout_height="150dp"
+                android:layout_gravity="start"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
                 android:background="@color/aux_color2"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
 
                 android:textColor="@color/text_color"
                 android:textSize="17dp"
@@ -97,10 +99,10 @@
             </Button>
             <Button
                 android:id="@+id/mainActivity_btn_histMovs"
-                android:layout_gravity="left"
+
                 android:layout_marginLeft="15dp"
-                android:layout_width="170dp"
-                android:layout_height="150dp"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
                 android:textSize="17dp"
                 android:padding="5dp"
                 android:gravity="bottom"

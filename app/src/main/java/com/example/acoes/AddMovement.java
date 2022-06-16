@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class AddMovement extends AppCompatActivity {
     EditText dataMov;
     Spinner spinnerAcao;
     int idUser;
+    int idMovement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +45,47 @@ public class AddMovement extends AppCompatActivity {
         dataMov = findViewById(R.id.addMovementActivity_date_compra);
         spinnerAcao = findViewById(R.id.spininer);
 
+        //seta o spinner de acoes na tala
         controller = new MovementController(context);
-
         spinnerAcao.setAdapter(controller.acoesArrayAdapter());
 
+        //deicha o botao invisivel se o usuario estiver adicionando uma nova movimentacao
+        btnDeletar.setVisibility(View.GONE);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
-            idUser = extras.getInt("id", 0);
+            try{
+                idUser = extras.getInt("id", 0);
+            }catch (Exception ex){
+
+            }
+            try{
+                idMovement = extras.getInt("id_movement", 0);
+            }catch (Exception ex){
+
+            }
+
+        }
+
+        if(idMovement > 0){
+            Movement mov = new Movement();
+            controller = new MovementController(context);
+            mov = controller.findMovById(idMovement);
+
+            qntdAcoes.setText(String.valueOf(mov.getQntd_total_acoes()));
+            valorUnit.setText(String.valueOf(mov.getVlr_unid()));
+            String data = Tools.converterData(mov.getDate(), "yyyy-MM-dd", "dd/MM/yyyy");
+            dataMov.setText(data);
+
+            for (int i = 0; i <= spinnerAcao.getAdapter().getCount(); i++) {
+                Acao acao = (Acao) spinnerAcao.getItemAtPosition(i);
+                if (mov.getId_acao() == acao.getId()) {
+                    System.out.println("entrei");
+                    spinnerAcao.setSelection(i);
+                    break;
+                }
+            }
+
         }
     }
 
@@ -113,6 +148,11 @@ public class AddMovement extends AppCompatActivity {
             mov.setDate(dataMo);
 
             controller = new MovementController(context);
+
+            if(idMovement > 0){
+                controller.update(mov, idUser);
+            }
+
             if(controller.insert(mov)){
                 Tools.toastMessage("Tudo certo por aqui", context);
             }else{

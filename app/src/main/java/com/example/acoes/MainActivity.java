@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         btnMovHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent tela = new Intent(context, ...);
-                //startActivity(tela);
+                Intent screen = new Intent(context, MovementHistory.class);
+                screen.putExtra("id", idUser);
+                startActivity(screen);
             }
         });
 

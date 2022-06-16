@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.example.acoes.database.DadosOpenHelper;
@@ -20,41 +21,40 @@ public class MovementController {
     private SQLiteDatabase conexao;
     private Context context;
 
-    public MovementController(Context context){
+    public MovementController(Context context) {
         DadosOpenHelper banco = new DadosOpenHelper(context);
         this.conexao = banco.getWritableDatabase();
         this.context = context;
 
     }
 
-    public ArrayAdapter<Acao> acoesArrayAdapter()
-    {
+    public ArrayAdapter<Acao> acoesArrayAdapter() {
         ArrayList<Acao> listAcoes = new ArrayList<>();
-        try{
-            String sql = "select * from "+ Tables.TB_ACOES;
+        try {
+            String sql = "select * from " + Tables.TB_ACOES;
             Cursor res = conexao.rawQuery(sql, null);
-            if(res.moveToFirst()){
+            if (res.moveToFirst()) {
 
                 Acao obj;
-                do{
+                do {
                     obj = new Acao();
                     obj.setId(res.getInt(res.getColumnIndexOrThrow("id")));
                     obj.setCd_acao(res.getString(res.getColumnIndexOrThrow("cd_acao")));
 
                     listAcoes.add(obj);
-                }while (res.moveToNext());
+                } while (res.moveToNext());
             }
 
-             ArrayAdapter<Acao> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, listAcoes);
+            ArrayAdapter<Acao> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, listAcoes);
             return adapter;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;
         }
 
     }
 
-    public boolean insert(Movement mov){
+    public boolean insert(Movement mov) {
         ContentValues values = new ContentValues();
         String dataFormatada = Tools.converterData(mov.getDate(), "dd/MM/yyyy", "yyyy-MM-dd");
 
@@ -63,15 +63,105 @@ public class MovementController {
             values.put("id_acao", mov.getId_acao());
             values.put("vlr_unid", mov.getVlr_unid());
             values.put("vlr_total", mov.getVlr_total());
-            values.put("qntd_acoes", dataFormatada);
-            values.put("data_movement", mov.getDate());
+            values.put("qntd_acoes", mov.getQntd_total_acoes());
+            values.put("data_movement", dataFormatada);
 
             conexao.insertOrThrow(Tables.TB_MOVIMENTCOES, null, values);
             return true;
-        }catch(Exception ex){
-            Tools.toastMessage("Erros ao inserir movimentacao "+ex.getMessage(), context);
+        } catch (Exception ex) {
+            Tools.toastMessage("Erros ao inserir movimentacao " + ex.getMessage(), context);
             return false;
         }
 
     }
+
+    public ArrayList<Movement> lista(int idUser) {
+        ArrayList<Movement> listMovement = new ArrayList<>();
+        try {
+            String sql = "select * from " + Tables.TB_MOVIMENTCOES + " where id_user =" + idUser;
+            Cursor res = conexao.rawQuery(sql, null);
+            if (res.moveToFirst()) {
+
+                Movement obj;
+                do {
+                    obj = new Movement();
+                    obj.setId_mov(res.getInt(res.getColumnIndexOrThrow("id")));
+                    obj.setId_user(res.getInt(res.getColumnIndexOrThrow("id_user")));
+                    obj.setId_acao(res.getInt(res.getColumnIndexOrThrow("id_acao")));
+                    obj.setVlr_unid(res.getFloat(res.getColumnIndexOrThrow("vlr_unid")));
+                    obj.setVlr_total(res.getFloat(res.getColumnIndexOrThrow("vlr_total")));
+                    obj.setQntd_total_acoes(res.getInt(res.getColumnIndexOrThrow("qntd_acoes")));
+                    obj.setDate(res.getString(res.getColumnIndexOrThrow("data_movement")));
+
+
+                    listMovement.add(obj);
+                } while (res.moveToNext());
+            }
+
+            //ArrayAdapter<Acao> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, listAcoes);
+            return listMovement;
+        } catch (Exception ex) {
+            Log.e("ERRO LISTA CONTROLLER", ex.getMessage());
+            return null;
+        }
+    }
+
+    public String findAcaoById(int idAcao){
+        String sql = "select * from " + Tables.TB_ACOES + " where id =" + idAcao;
+        Cursor res = conexao.rawQuery(sql, null);
+        String cd_acao = "";
+        if(res.moveToNext()){
+            return cd_acao =  res.getString(res.getColumnIndexOrThrow("cd_acao"));
+        }
+        return null;
+    }
+
+    public Movement findMovById(int idMov){
+        String sql = "select * from " + Tables.TB_MOVIMENTCOES + " where id =" + idMov;
+        Cursor res = conexao.rawQuery(sql, null);
+
+        try{
+            Movement obj = new Movement();
+            if(res.moveToNext()){
+                obj.setId_mov(res.getInt(res.getColumnIndexOrThrow("id")));
+                obj.setId_user(res.getInt(res.getColumnIndexOrThrow("id_user")));
+                obj.setId_acao(res.getInt(res.getColumnIndexOrThrow("id_acao")));
+                obj.setVlr_unid(res.getFloat(res.getColumnIndexOrThrow("vlr_unid")));
+                obj.setVlr_total(res.getFloat(res.getColumnIndexOrThrow("vlr_total")));
+                obj.setQntd_total_acoes(res.getInt(res.getColumnIndexOrThrow("qntd_acoes")));
+                obj.setDate(res.getString(res.getColumnIndexOrThrow("data_movement")));
+            }
+            return obj;
+        }catch (Exception ex){
+            Log.e("ERRO LISTA CONTROLLER", ex.getMessage());
+            return null;
+        }
+
+    }
+
+    public boolean update(Movement mov, int idUser){
+        ContentValues values = new ContentValues();
+        String dataFormatada = Tools.converterData(mov.getDate(), "dd/MM/yyyy", "yyyy-MM-dd");
+
+        try {
+            values.put("id_user", idUser);
+            values.put("id_acao", mov.getId_acao());
+            values.put("vlr_unid", mov.getVlr_unid());
+            values.put("vlr_total", mov.getVlr_total());
+            values.put("qntd_acoes", mov.getQntd_total_acoes());
+            values.put("data_movement", dataFormatada);
+
+            String[] parametros = new String[1];
+            parametros[0] = String.valueOf(mov.getId_mov());
+
+            conexao.update(Tables.TB_MOVIMENTCOES, values, "id = ?" , parametros);
+
+            conexao.insertOrThrow(Tables.TB_MOVIMENTCOES, null, values);
+            return true;
+        } catch (Exception ex) {
+            Tools.toastMessage("Erros ao inserir movimentacao " + ex.getMessage(), context);
+            return false;
+        }
+    }
+
 }

@@ -69,4 +69,6 @@ public class Movement {
 
     //TODO override o metodo toString para retornar valore reais
     //@Override
+    @Override
+    public String toString(){return date;}
 }

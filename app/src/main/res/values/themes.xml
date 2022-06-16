@@ -15,19 +15,15 @@
     </style>
 
 
-    <style name="buttonPrimary" parent="ThemeOverlay.Material3.Button">
+    <style name="buttonPrimary" parent="ThemeOverlay.AppCompat">
         <item name="android:textSize">24dp</item>
-        <item name="android:background">@color/default_color_app</item>
+        <item name="android:backgroundTint">@color/default_color_app</item>
         <item name="android:textColor">@color/text_color</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
     <style name="button_esc" parent="Widget.AppCompat.Light.ActionButton">
-
-        <item name="android:background">@color/default_background</item>
-
-
-
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="default_basic_screen" parent="TextAppearance.AppCompat.Widget.Button">

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="50dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color"
-            android:text="teset"
+            android:text="teste"
             android:textSize="30dp"
             android:paddingLeft="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -41,86 +41,80 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:text="User"
-            android:textSize="25dp"
-            android:textColor="@color/text_color"
             android:fontFamily="@font/poppins_regular"
-            >
-        </TextView>
+            android:gravity="center"
+            android:text="User"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"></TextView>
 
         <EditText
             android:id="@+id/loginActivity_txt_user"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="19qwerwe"
-            android:textSize="20dp"
-            android:inputType="text"
-            android:gravity="center"
-            android:textColor="@color/text_color"
             android:layout_gravity="center"
             android:background="@color/background_color2"
+            android:gravity="center"
+            android:hint="user"
+            android:inputType="text"
             android:padding="10dp"
-            >
+            android:textColor="@color/text_color"
+            android:textSize="20dp">
 
         </EditText>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:text="Password"
-            android:textSize="25dp"
-            android:textColor="@color/text_color"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="30dp"
-            >
-        </TextView>
+            android:gravity="center"
+            android:text="Password"
+            android:textColor="@color/text_color"
+            android:textSize="25dp"></TextView>
 
         <EditText
             android:id="@+id/loginActivity_txt_password"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="19qwerwe"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:inputType="textPassword"
-            android:textColor="@color/text_color"
             android:layout_gravity="center"
             android:background="@color/background_color2"
+            android:gravity="center"
+            android:hint="password"
+            android:inputType="textPassword"
             android:padding="10dp"
-            >
+            android:textColor="@color/text_color"
+            android:textSize="20dp">
 
         </EditText>
 
         <Button
             android:id="@+id/loginActivity_bnt_login"
-            android:layout_width="250dp"
+            style="@style/buttonPrimary"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="Login"
-            android:theme="@style/buttonPrimary"
-            android:layout_marginTop="100dp"
-            >
-        </Button>
+            android:text="Login"></Button>
 
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/button_esc"
+        android:background="@android:color/transparent"
         android:text="REGISTER NOW -->"
         android:layout_marginTop="100dp"
         android:gravity="start"
