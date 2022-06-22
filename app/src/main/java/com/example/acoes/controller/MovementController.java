@@ -139,12 +139,33 @@ public class MovementController {
 
     }
 
-    public boolean update(Movement mov, int idUser){
+    public float getTotalMovements(int idUser){
+        String sql = "select vlr_total from " + Tables.TB_MOVIMENTCOES + " where id_user =" + idUser;
+        Cursor res = conexao.rawQuery(sql, null);
+
+        float vlrTotal = 0f;
+
+        try{
+            if (res.moveToFirst()) {
+                while (res.moveToNext()){
+                    vlrTotal = vlrTotal + res.getFloat(res.getColumnIndexOrThrow("vlr_total"));
+                }
+
+                return vlrTotal;
+            }
+            return 0;
+        }catch (Exception e){
+            Log.e("ERRO LISTA CONTROLLER", e.getMessage());
+            return 0;
+        }
+    }
+
+    public boolean update(Movement mov, int idMov){
         ContentValues values = new ContentValues();
         String dataFormatada = Tools.converterData(mov.getDate(), "dd/MM/yyyy", "yyyy-MM-dd");
 
         try {
-            values.put("id_user", idUser);
+            values.put("id_user", mov.getId_user());
             values.put("id_acao", mov.getId_acao());
             values.put("vlr_unid", mov.getVlr_unid());
             values.put("vlr_total", mov.getVlr_total());
@@ -152,13 +173,13 @@ public class MovementController {
             values.put("data_movement", dataFormatada);
 
             String[] parametros = new String[1];
-            parametros[0] = String.valueOf(mov.getId_mov());
+            parametros[0] = String.valueOf(idMov);
 
-            conexao.update(Tables.TB_MOVIMENTCOES, values, "id = ?" , parametros);
+            conexao.update(Tables.TB_MOVIMENTCOES, values, "id = ? ", parametros);
 
-            conexao.insertOrThrow(Tables.TB_MOVIMENTCOES, null, values);
             return true;
         } catch (Exception ex) {
+            Log.e("ERRO update CONTROLLER", ex.getMessage());
             Tools.toastMessage("Erros ao inserir movimentacao " + ex.getMessage(), context);
             return false;
         }

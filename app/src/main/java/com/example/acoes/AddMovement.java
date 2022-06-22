@@ -140,23 +140,26 @@ public class AddMovement extends AppCompatActivity {
 
         try{
             Movement mov = new Movement();
-            mov.setId_user(idUser);
+            //mov.setId_mov(idMovement);
+
             mov.setId_acao(acao.getId());
-            mov.setVlr_total(valorUn * qntdAcao);
             mov.setVlr_unid(valorUn);
             mov.setQntd_total_acoes(qntdAcao);
+            mov.setVlr_total(valorUn * qntdAcao);
             mov.setDate(dataMo);
 
             controller = new MovementController(context);
 
             if(idMovement > 0){
-                controller.update(mov, idUser);
-            }
+                Movement oldMov = controller.findMovById(idMovement);
 
-            if(controller.insert(mov)){
+                mov.setId_user(oldMov.getId_user());
+
+                controller.update(mov, idMovement);
+            } else{
+                mov.setId_user(idUser);
+                controller.insert(mov);
                 Tools.toastMessage("Tudo certo por aqui", context);
-            }else{
-                System.out.println("fudeo");
             }
 
 
